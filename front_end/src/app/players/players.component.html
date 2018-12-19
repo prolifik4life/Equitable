@@ -1,0 +1,69 @@
+<mat-card  *ngIf="players != 0">
+        <mat-card-title>
+            List of Players
+            <span style='flex:1 1 auto;'></span>
+            <button mat-button routerLink="/player" class="pos_AddPlayer">Add Player</button>
+        </mat-card-title>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Skills Level
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th class="actions"></th>
+                </tr>
+                <tr *ngFor="let player of players">
+                    <td>{{player.firstName}}</td>
+                    <td>{{player.lastName}}</td>
+                    <td>{{player.age}}</td>
+                    <td>{{displaySkillLevel(player.skillLevel)}}</td>
+                    <td>{{player.email}}</td>
+                    <td class="actions">
+                        <button mat-button [routerLink]="['/player', player.playerId]" class="pos_AddPlayer" (click)="api.selectPlayer(player)">Edit</button>
+                        <button mat-button (click)="openModal('delete_dialog', player.playerId)" class="pos_AddPlayer">Delete</button>
+                    </td>
+                </tr>
+            </table>
+            <!-- <mat-list >
+                <mat-list-item class="clickLink" (click)="api.selectQuestion(question)">
+                     {{player.lastName}} {{player.age}}
+                </mat-list-item>
+            </mat-list> -->
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+    
+    <mat-card *ngIf="players == 0">
+        <mat-card-title>
+            There are no players
+            <span style='flex:1 1 auto;'></span>
+            <button mat-button routerLink="/player" class="pos_AddPlayer">Add Player</button>
+        </mat-card-title>
+    </mat-card>
+    
+    <modal id="delete_dialog" [player] = "player">
+        <div class="modal">
+            <div class="modal-body">
+                <h1>Deleteing Record</h1>
+                <p>
+                    Are you sure you want to delete this record?
+                </p>
+                <button mat-button (click)="deletePlayer(player);">Yes</button>
+                <button mat-button (click)="closeModal('delete_dialog');">Cancel</button>
+            </div>
+        </div>
+        <div class="modal-background"></div>
+    </modal>

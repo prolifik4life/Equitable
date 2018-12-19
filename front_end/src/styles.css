@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.main-container{
+    width: 1200px;
+    margin-top: -8px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+}
+
+.pos_AddPlayer{
+    float:right;
+}
+
+.fullWidth{
+    width: 300px;
+    display: block !important;
+}
+
+@media (max-width: 768x) {
+    .main-container{
+        width: 100%;
+    }
+}
+
+@media(max-width: 992px) {
+    .main-container{
+        width: 960px;
+    }
+}
+
+th,td{
+    width: 100px;
+    text-align: left;
+}
+
+.actions{
+    width: 200px;
+    word-spacing: 10px;
+}
